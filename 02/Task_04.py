@@ -14,8 +14,8 @@ if " " in username:
     input_errors.append("Your username cannot contain whitespace.")
 
 # email check
-if "@" not in email:
-    input_errors.append("Your email address is not valid. Must contain a '@' character.")
+if email.count("@") != 1:
+    input_errors.append("Your email address is not valid. Must contain exactly one '@' character.")
 
 # age check
 if not age.isdigit():
@@ -32,14 +32,9 @@ if len(password) < 8:
 if " " in password:
     input_errors.append("Your password cannot contain whitespace.")
 
-if password:
-    for char in password:
-        if char != password[0]:
-            same_characters = False
-            break
+if password and password.count(password[0]) == len(password):
+    input_errors.append("Password cannot consist of one character.")
 
-    if same_characters:
-        input_errors.append("Password cannot consist of one character.")
 
 
 
